@@ -1,0 +1,75 @@
+<% provide(:title, @event.title) %>
+
+<header>
+	<h1 id="show-title"><%= @event.title %></h1>
+	<ul class="actions">
+		<li><%= link_to "Edit Event", edit_event_path, class: "edit" if policy(@event).edit? %></li>
+		<li><%= link_to "Delete Event", event_path, method: :delete, data: {confirm: "Are you sure?"}, class: "delete" if policy(@event).destroy? %></li>
+		<li><%= link_to "Register Event", event_attendances_path(@event), method: :post, class: "new"  %></li>
+		<li><%= link_to "Back", events_path, class: "btn btn-default" %></li>
+	</ul>
+</header>
+
+
+<div class="row">
+	<div class="col-sm-9">
+		<%= image_tag @event.image.url, class: "event-image" if @event.image.present? %>
+
+		<div class="event-meta">
+			<h4><span class="event-start"><strong>Starts:</strong><%= time_format(@event.start_date) %></span></h4>
+			<p>
+				<span class="event-end"><strong>Ends:</strong><%= time_format(@event.start_date) %></span>
+			</p>
+		</div>
+
+		<div class="event-details">
+			<h3>Event Details</h3>
+			<p><%= @event.description %></p>
+		</div>
+		
+		<header>
+			<div id="comments">
+				<% if @event.comments.any?%>
+					<%= render @event.comments %>
+				<% else%>
+					<p>There are no comments for this event</p>
+				<% end %>
+			</div>
+		</header>
+		<%= render "comments/form", event: @event, comment: @comment if policy(@comment).create? %>
+	</div>
+
+	<div class="col-sm-3">
+		<div class="sidebar">
+			<h4 class="organizer"><%=link_to @event.organizer.organisation_name, user_path(@event.organizer) %></h4>
+			<p>
+				<span class="event-venue"><%= @event.venue %>,<strong><%= @event.location %></strong></span>
+			</p>
+		</div>
+		<hr>
+		<div class="sidebar">
+			<h4 class="tags">Tags</h4>
+			<% if @event.tags.any?%>
+				<%= render @event.tags%>
+			<% end %>
+		</div>
+		<hr>
+		<div class="sidebar">
+			<h4 class="attendees">Attendees</h4> 
+		</div>
+		<hr>
+		<div class="sidebar">
+			<h4 class="likes">Likes</h4>
+			<%= link_to event_likes_path(@event, like: "like"), method: :post do %>
+				<span id="like"><%= @event.total_likes %></span>
+			<% end %> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%= link_to event_likes_path(@event, like: "dislike"), method: :post do %>
+				<span id="dislike"><%= @event.total_dislikes %></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+

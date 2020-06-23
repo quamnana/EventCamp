@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title))%></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+  <body>
+
+<% unless current_page?(root_path) %>
+  <%= render "layouts/header"%>
+  <div class="container">
+    <% flash.each do |type, message|%>
+      <div class="alert alert-<%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+
+<% end%>
+
+
+
+<div class="container">
+  <%= yield %>
+ </div>
+  
+
+
+
+  </body>
+</html>
