@@ -1,7 +1,8 @@
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2">
-		<%= simple_form_for(event) do |f| %>
 	
+	<%= simple_form_for(event) do |f| %>
+		<div class="col-sm-8">
+			<h3>Basic Details</h3>
 			<%= f.input :title %>
 
 			<%= f.input :description %>
@@ -10,19 +11,50 @@
 
 			<%= f.input :end_date, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year] %>
 			
-			<%= f.input :venue %>
-
-			<%= f.input :location %>
-
 			<%= f.input :category_id, collection: Category.all, label: "Select Category", prompt: true %>
 
 			<%= f.input :tag_list, label: "Tag", hint: "Please enter comma seperated words only" %>
 
+			<h3>Venue and Location</h3>
+			<%= f.input :venue %>
+
+			<%= f.input :location %>
+
+			<h3>Image Upload</h3>
 			<%= f.input :image, as: :file, label: "Upload Event Image" %>
+			
+
+			
 
 			<%= f.button :submit, class: "btn btn-primary" %>
-		<% end %>
+		</div>
+
+
+
+
+		<!-- Adding nested form -->
+				<div class="col-sm-4">
+					<h3>Tickets Details</h3>
+					<div id="tickets">
+						<%= f.simple_fields_for :tickets do |ticket|%>
+							<%= render "ticket_fields", f: ticket %>
+							<hr>
+							<hr>
+						<% end %>
+
+						<div class="links">
+							<%= link_to_add_association 'Add Ticket', f, :tickets, class: "btn btn-default add-button" %>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+	<% end %>
 
 		<%= link_to "Back", events_path %>
-	</div>
+	
 </div>

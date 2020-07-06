@@ -23,6 +23,11 @@ class Event < ApplicationRecord
 	validates :venue, presence: true
 	validates :location, presence: true
 
+#Association between events and ticket model
+	has_many :tickets, dependent: :destroy
+	accepts_nested_attributes_for :tickets, reject_if: :all_blank, allow_destroy: true
+
+	
 #Mounting image file uploader
 	mount_uploader :image, ImageUploader
 

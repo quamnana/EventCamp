@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 		authorize @event, :show?
 		@comment = Comment.new
 		@comment.event_id = @event.id
+		@order_item = current_order.order_items.new
 		
 	end
 
@@ -31,7 +32,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(event_params)
 		@event.organizer = current_user
-
+	
 		authorize @event, :create?
 		
 		if @event.save
@@ -85,7 +86,7 @@ class EventsController < ApplicationController
 		
 
 		def event_params
-			params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image, :category_id, :tag_list)
+			params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image, :category_id, :tag_list, tickets_attributes: [:id, :name, :price, :sku, :_destroy])
 		end
 
 		#def authorize_owner!
