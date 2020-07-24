@@ -10,6 +10,7 @@ class Admin::ApplicationController < ApplicationController
     @comments = Comment.all
     @attendances = Attendance.all
     @likes = Like.all
+    @orders = Order.all
   end
 
 

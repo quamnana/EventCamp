@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
     resources :attendances, only: [:index]
     resources :events, only: [:index]
+    resources :orders, only: [:index, :show]
   end
   
   devise_for :users, controller:{ registrations: 'registrations'}
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
-    resources :attendances, only: [:create]
+    resources :attendances, only: [:show]
   end
 
 

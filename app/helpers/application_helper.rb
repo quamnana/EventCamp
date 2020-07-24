@@ -28,7 +28,6 @@ module ApplicationHelper
 		hash = Digest::MD5.hexdigest(user.email.downcase)
 		"https://www.gravatar.com/avatar/#{hash}"
 	end
-	
 
 	def current_order
 		if !session[:order_id].nil?

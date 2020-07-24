@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
 			currency: 'usd'
 		})
 
-
+		
 		flash[:notice] = "Hooray! Your ticket purchase was successful.. "
 		redirect_to events_path
 		

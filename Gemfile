@@ -47,6 +47,7 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'fog', '~> 2.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem "cocoon"
+gem 'rqrcode'
 
 #gem 'searchkick', '~> 3.1', '>= 3.1.2'
 gem 'stripe'
