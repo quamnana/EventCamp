@@ -2,7 +2,7 @@
 	<h1> All Comments</h1>
 
 	<ul class = "actions">
-		<li><%= link_to "Back to Dashboard", admin_root_path, class: "ibtn" %></li>
+		<li><%= link_to "Back", admin_events_path, class: "btn btn-default" %></li>
 	</ul>
 </header>
 
@@ -19,10 +19,10 @@
 
 
 	<tbody>
-		<% @comments.each do |comment| %>
+		<% @event.comments.each do |comment| %>
 			<tr>
 				<td><%= comment.author.full_name if comment.author %></td>
-				<td><%= truncate(comment.body, lenght: 30)%></td>
+				<td><%= truncate(comment.body, length: 30)%></td>
 				<td><%= time_format(comment.created_at) %></td>
 				<td><%= link_to comment.event.title, event_path(comment.event) %></td>
 			</tr>

@@ -16,10 +16,6 @@
            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="<%="active" if current_page?("/events")%>"><%= link_to "Events", events_path %></li>
-                <% admins_only do %>
-                  <li class="<%="active" if current_page?("/admin")%>"><%= link_to "Dashboard", admin_root_path %></li>
-                <% end %>
 
                 <% unless user_signed_in? %>
                   <li class="<%="active" if current_page?("/users/sign_up")%>"><%= link_to "Sign Up", new_user_registration_path %></li>
@@ -28,6 +24,11 @@
               </ul>
               
               <ul class="nav navbar-nav navbar-right">
+                <li class="<%="active" if current_page?("/events")%>"><%= link_to "Events", events_path %></li>
+                <% admins_only do %>
+                  <li class="<%="active" if current_page?("/admin")%>"><%= link_to "Dashboard", admin_root_path %></li>
+                <% end %>
+                
                 <% if user_signed_in? %>
                   <li class="<%="active" if current_page?("/users/sign_up")%>">
                     <%= link_to edit_user_registration_path do %>

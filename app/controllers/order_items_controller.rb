@@ -1,10 +1,12 @@
 class OrderItemsController < ApplicationController
 	skip_after_action :verify_authorized
+	before_action :authenticate_user!
 
 	def create
 		@order = current_order
-		@order_item = @order.order_items.new(order_params)	
-		@order.save
+		@order_item = @order.order_items.new(order_params)
+		@order.user = current_user
+		@order.save!
 		session[:order_id] = @order.id
 	end
 

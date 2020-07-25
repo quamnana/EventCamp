@@ -15,19 +15,30 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Registered</th>
-				<th>Event Status</th>
-				<th colspan="3"></th>
+				<th>Ticket Purchased</th>
+				<th colspan="3">Ticket Code</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<% @event.attendees.reverse.each do |user| %>
-				<tr>
-					<td><%= user.full_name %></td>
-					<td><%= user.email %></td>
-					<td><%= user.created_at %></td> 
-					<td><%= "#" %></td>
-				</tr>
+				<% user.orders.each do |order| %>
+					<% order.order_items.each do |order_item| %>
+						<% if order.subtotal > 0 %>
+							<tr>
+								<td><%= user.full_name %></td>
+								<td><%= user.email %></td>
+								<td><%= time_format(user.created_at) %></td>
+								<td><%= order.subtotal %></td>
+								<td>
+									<% order_item.ticket.coupons.each do |coupon| %>
+										<%= coupon.code %>
+									<% end %>
+								</td>	
+							</tr>
+						<% end %>
+					<% end %>
+				<% end %>
 			<% end %>
 		</tbody>
 	</table>

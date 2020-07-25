@@ -6,7 +6,7 @@
             
 		</header>
 
-		<h2>Welcome to Admin Dashboard of Ibento</h2>
+		<h2>Welcome to Admin Dashboard of EventCamp</h2>
 		</br>
 		</br>
 	</div>
@@ -61,30 +61,7 @@
                     <% end %>
                 </div>
 
-                 <div class="col-lg-3 col-md-6">
-                	<%= link_to admin_attendances_path do%>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-users fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><%= @attendances.count %></div>
-                                    <div>Attendees</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                    <% end %>
-                </div>
+               
 
                 <div class="col-lg-3 col-md-6">
                 	<%= link_to admin_events_path do%>
@@ -136,57 +113,5 @@
                     </div>
                     <% end %>
                 </div>
-
-                <%= link_to admin_comments_path do%>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><%= @comments.count %></div>
-                                    <div>Comments</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <% end %>
-                
-
-                <%= link_to "#" do %>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-thumbs-o-up fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><%= @likes.count %></div>
-                                    <div>Likes</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <% end %>
-
-</div>
+    </div>
 </div>

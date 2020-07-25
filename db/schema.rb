@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_051014) do
+ActiveRecord::Schema.define(version: 2020_07_24_232943) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "event_id"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2020_06_27_051014) do
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "event_id"
-    t.index ["event_id"], name: "index_orders_on_event_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -86,7 +86,8 @@ class EventsController < ApplicationController
 		
 
 		def event_params
-			params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image, :category_id, :tag_list, tickets_attributes: [:id, :name, :price, :sku, :_destroy])
+			params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image, 
+										  :category_id, :tag_list, tickets_attributes: [:id, :name, :price, :sku, :_destroy])
 		end
 
 		#def authorize_owner!

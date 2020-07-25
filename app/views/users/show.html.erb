@@ -31,8 +31,8 @@
 					<td><%= event_status(event) %></td>
 					<td><%= link_to "View", event_attendance_path(event) %></td>
 					<td>
-						<%= link_to "Edit", edit_event_path(event), class: "edit" if policy(event).edit? %>
-						<%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this event"}, class: "delete" if policy(event).destroy? %>
+						<%= link_to "Edit", edit_event_path(event) if policy(event).edit? %> |
+						<%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this event"} if policy(event).destroy? %>
 					</td>
 				</tr>
 			<% end %>
@@ -72,8 +72,8 @@
 					<td><%= time_format(event.end_date) %></td> 
 					<td><%= event_status(event) %></td>
 					<td>
-						<%= link_to "Edit", edit_event_path(event), class: "edit" if policy(event).edit? %>
-						<%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this event"}, class: "delete" if policy(event).destroy? %>
+						<%= link_to "Edit", edit_event_path(event) if policy(event).edit? %> |
+						<%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this event"} if policy(event).destroy? %>
 					</td>
 				</tr>
 			<% end %>

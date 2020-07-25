@@ -1,5 +1,18 @@
 class Admin::AttendancesController < Admin::ApplicationController
-	def index
-		@attendances = Attendance.order(created_at: :desc)
+	before_action :set_event
+	before_action :authenticate_user!
+	#skip_after_action :verify_authorized
+	
+	def show
 	end
+
+
+
+
+
+	private
+		def set_event
+			@event = Event.friendly.find(params[:id])
+		end
+
 end

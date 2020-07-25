@@ -11,6 +11,8 @@
 		<tr>
 			<th>User Id</th>
 			<th>Avatar</th>
+			<th>First Name</th>
+			<th>Last Name</th>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Joined</th>
@@ -22,7 +24,9 @@
 		<% @users.each do |user| %>
 			<tr>
 				<td><%= link_to user.id, user_path(user), class: "btn btn-primary" %></td>
-				<td><%= "Avatar" %></td>
+				<td><%= image_tag avatar_url(current_user), width: 25, class: "img-circle"%> </td>
+				<td><%= user.first_name %></td>
+				<td><%= user.last_name %></td>
 				<td><%= user.username %></td>
 				<td><%= user.email %></td>
 				<td><%= time_format(user.created_at) %></td>

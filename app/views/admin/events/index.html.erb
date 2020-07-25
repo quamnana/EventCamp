@@ -14,9 +14,11 @@
 			<th>Title</th>
 			<th>Venue</th>
 			<th>Created</th>
-			<th>Number Attendees</th>
+			<th>Attendees</th>
+			<th>Comments</th>
+			<th>Likes</th>
 			<th>Status</th>
-			<th colspan="3"></th>
+			<th colspan="5"></th>
 		</tr>
 	</thead>
 
@@ -24,13 +26,14 @@
 	<tbody>
 		<% @events.each do |event| %>
 			<tr>
-				<td><%= event.title %></td>
+				<td><%= link_to event.title, event_path(event) %></td>
 				<td><%= event.venue%></td>
 				<td><%= time_format(event.created_at) %></td>
-				<td><%= event.attendees.count %></td>
+				<td><%= link_to event.attendees.count, admin_attendance_path(event), class: "btn btn-primary" %></td>
+				<td><%= link_to event.comments.count, admin_comment_path(event), class: "btn btn-success" %></td>
+				<td><%= event.likes.count %></td>
 				<td><%= event_status(event) %></td>
 				<td>
-					<%= link_to "View", event_path(event) %> |
 					<%= link_to "Edit", edit_event_path(event) %> |
 					<%= link_to "Delete", event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this event"} %>
 				</td>
