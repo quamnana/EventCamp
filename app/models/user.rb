@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :attendances
   has_many :attended_events, through: :attendances
   has_many :orders
+  has_many :coupons
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

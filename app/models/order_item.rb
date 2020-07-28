@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
 
   validates :quantity, presence: true
 
-
+  has_many :coupons
   before_save :set_unit_price
   before_save :set_total
 

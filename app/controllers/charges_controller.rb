@@ -15,12 +15,13 @@ class ChargesController < ApplicationController
 		@amount = @order.subtotal_in_cents
 		@event = @order_items.last.ticket.event
 		
-		
+		# Stripe customer 
 		customer = Stripe::Customer.create({
 			email: params['stripeEmail'],
 			source: params['stripeToken']
 		})
-
+		
+		# Stripe charge
 		charge = Stripe::Charge.create({
 			customer: customer.id,
 			amount: @amount,
@@ -28,20 +29,20 @@ class ChargesController < ApplicationController
 			currency: 'usd'
 		})
 
-		
+		# Stripe payment success notification and redirection
 		flash[:notice] = "Hooray! Your ticket purchase was successful.. "
-		redirect_to events_path
+		redirect_to order_path(@order)
 		
-
-	rescue Stripe::CardError => e
-		flash[:error] = e.message
-		redirect_to new_charge_path
+		# Stripe error handler
+		rescue Stripe::CardError => e
+			flash[:error] = e.message
+			redirect_to new_charge_path
 	end
 
 
 
 	private
-		# @order_items is in an array form so an iteration has to be done
+		# @order_items is an array so an iteration has to be done
 		#in order to get each ticket in each order_item so that coupons can 
 		#be generated for those tickets 
 		def set_coupon
@@ -49,14 +50,18 @@ class ChargesController < ApplicationController
 				@ticket = order_item.ticket
 				@quantity = order_item.quantity
 				
+				# Creating coupon instance/object for every ticket's order_item based on their quantity
 				@quantity.times do
-					@ticket.coupons.create!
+					@ticket.coupons.where(order_item_id: order_item, user_id: current_user, event_id: @event).create!
 				end
 			end
 		end
 
+		# Create attendee instance/object after payment
 		def set_attendance
 			@attendance = @event.attendances.where(attendee: current_user).create
 		end
+
+		
 
 end

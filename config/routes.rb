@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   resources :order_items
   resources :carts, only: [:show]
   resources :charges
-	
+  resources :orders, only: [:show]
+  
   resources :events do
     resources :likes, only: [:create]
     resources :comments, only: [:create]

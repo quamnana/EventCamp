@@ -8,37 +8,27 @@
 
 <!--This is for organized events -->
 
-<% if @event.attendees.any? %>
+<%if @event.attendees.any? %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>Name</th>
 				<th>Email</th>
-				<th>Registered</th>
+				<th>Registered Date</th>
 				<th>Ticket Purchased</th>
 				<th colspan="3">Ticket Code</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<% @event.attendees.reverse.each do |user| %>
-				<% user.orders.each do |order| %>
-					<% order.order_items.each do |order_item| %>
-						<% if order.subtotal > 0 %>
-							<tr>
-								<td><%= user.full_name %></td>
-								<td><%= user.email %></td>
-								<td><%= time_format(user.created_at) %></td>
-								<td><%= order.subtotal %></td>
-								<td>
-									<% order_item.ticket.coupons.each do |coupon| %>
-										<%= coupon.code %>
-									<% end %>
-								</td>	
-							</tr>
-						<% end %>
-					<% end %>
-				<% end %>
+			<% @event.coupons.each do |coupon| %>
+				<tr>
+					<td><%= coupon.user.full_name %></td>
+					<td><%= coupon.user.email %></td>
+					<td><%= coupon.created_at %></td>
+					<td><%= coupon.ticket.name %></td>
+					<td><%= (coupon.code).upcase %></td>
+				</tr>
 			<% end %>
 		</tbody>
 	</table>

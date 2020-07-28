@@ -1,0 +1,53 @@
+<% @order.order_items.each do |order_item| %>
+	<% order_item.coupons.each do |coupon| %>
+
+		<header>
+			<h2>Event Ticket</h2>
+		</header>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<%= image_tag @ticket.event.image_url, class: "event-image" if @ticket.event.image.present? %>
+			</div>
+
+			<div class="col-sm-8">
+				<h1><%= @ticket.event.title %></h1>
+				<h4><%= time_format(@ticket.event.start_date) %></h4>	
+				<p><h3><strong><%= @ticket.event.venue %></strong></h3></p>
+				<h3><%= @ticket.event.location %></h3> 
+			</div>
+		</div>
+
+		<br><br><br>
+		<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><h3><strong>Name</strong></h3></th>
+						<th><h3><strong>Price</strong></h3></th>
+						<th><h3><strong>Token</strong></h3></th>
+						<th><h3><strong>Purchased By</strong></h3></th>
+						<th><h3><strong>Email</strong></h3></th>
+						<th colspan="3"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<!-- Ticket Details -->
+						<td><h4><%= order_item.ticket.name%></h4></td> 
+						<td><h4><%= order_item.ticket.price%></h4></td>
+						<td><h4><%= (coupon.code).upcase %></h4></td>	
+
+						<!-- Attendee/Purchaser's Details-->
+						<td><h4><%= @order.user.full_name%></h4></td>
+						<td><h4><%= @order.user.email%></h4></td>
+						<td><%= @svg.html_safe %></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Secured By EventCamp | <strong><%= (order_item.ticket.sku).upcase %> | <%= time_format(@order.created_at) %></strong></p>
+			
+			<hr width="1088" style="border: 2px dashed #000" color="#FFFFFF" size="6">
+	<% end %>
+<% end %>
+

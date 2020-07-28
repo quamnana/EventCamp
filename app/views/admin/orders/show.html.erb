@@ -15,20 +15,23 @@
 			<th>Quantity</th>
 			<th>Sub-Total</th>
 			<th>Sku</th>
-			<th colspan="3"></th>
+			<th colspan="3">Ticket Code</th>
 		</tr>
 	</thead>
 
-
+	<!-- Each ticket's order_item details-->
 	<tbody>
-		<% @order_item.each do |order_item| %>
-			<tr>
-				<td><%= order_item.ticket.name %></td>
-				<td><%= order_item.ticket.price %></td>
-				<td><%=order_item.quantity %></td>
-				<td><%= order_item.total %></td>
-				<td><%= order_item.ticket.sku %></td>
-			</tr>
+		<% @order_items.each do |order_item| %>
+			<% order_item.coupons.each do |coupon| %>
+				<tr>
+					<td><%= order_item.ticket.name %></td>
+					<td><%= order_item.ticket.price %></td>
+					<td><%=order_item.quantity %></td>
+					<td><%= order_item.total %></td>
+					<td><%= (order_item.ticket.sku).upcase %></td>
+					<td><%= (coupon.code).upcase %></td>
+				</tr>
+			<% end %>
 		<% end %>
 		<td><strong><h3>Total: <%= @order.subtotal %></h3></strong></td>
 	</tbody>

@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	
+	has_many :coupons
 #Association between events and user model
 	belongs_to :organizer, class_name: "User", foreign_key: "user_id"
 #Association between events and category model	
