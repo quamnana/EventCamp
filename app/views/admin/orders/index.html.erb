@@ -13,7 +13,6 @@
 		<tr>
 			<th>Order Id</th>
 			<th>Event Name</th>
-			<th>No of Tickets</th>
 			<th>Date of Order</th>
 			<th>Total</th>
 			<th colspan="3">Ordered By</th>
@@ -26,7 +25,6 @@
 			<tr>
 				<td><%= link_to order.id, admin_order_path(order), class: "btn btn-primary" %></td>
 				<td><%= link_to order.order_items.last.ticket.event.title, admin_order_path(order)%></td>
-				<td><%= order.order_items.count %></td>
 				<td><%= time_format(order.created_at)%></td>
 				<td><%= order.subtotal%></td>
 				<td><%= order.user.full_name%></td>

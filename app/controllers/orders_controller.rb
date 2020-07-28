@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
+	before_action :set_order, only: [:show]
 	before_action :authenticate_user!
-	skip_after_action :verify_authorized
 	
 
 	def show
-		@order = Order.find(params[:id])
+		authorize @order
 		@order_items = @order.order_items 
 		
 		@order_items.each do |order_item|
@@ -23,4 +23,11 @@ class OrdersController < ApplicationController
 			end
 		end	
 	end
+
+
+
+	private
+		def set_order
+			@order = Order.find(params[:id])
+		end
 end

@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
 
 		# Stripe payment success notification and redirection
 		flash[:notice] = "Hooray! Your ticket purchase was successful.. "
-		redirect_to order_path(@order)
+		redirect_to reciept_path(@order)
 		
 		# Stripe error handler
 		rescue Stripe::CardError => e

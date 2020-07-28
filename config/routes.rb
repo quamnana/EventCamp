@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'carts/show'
+ 
   namespace :admin do
     root 'application#index'
     resources :users, only: [:index]
@@ -19,14 +19,18 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
 	resources :users, only: [:show]
   resources :order_items
-  resources :carts, only: [:show]
   resources :charges
   resources :orders, only: [:show]
+  resources :carts, only: [:show]
+  resources :reciepts, only: [:show]
+
+   get 'carts/show'
+   get 'reciepts/show'
   
   resources :events do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
-    resources :attendances, only: [:show]
+    resources :attendances, only: [:create, :show]
   end
 
 

@@ -20,47 +20,56 @@
 				<span class="event-end"><strong>Ends:</strong><%= time_format(@event.start_date) %></span>
 			</p>
 		</div>
+
+		<!-- Ticket Details-->
 		<% if user_signed_in? %>
-		<div class="event-ticket">
-			<h3>Ticket Information</h3>
-			<%if @event.tickets.any? %>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Ticket Type</th>
-								<th>Price</th>
-								<th></th>
-							</tr>
-						</thead>
-						<% @event.tickets.each do |ticket| %>
-						<tbody>
-							<tr>
-								<td><%= ticket.name %></td>
-								<td><%= ticket.price %></td>
-								<td>
-									<%= simple_form_for @order_item, remote:true do |f| %>
-										<%= f.hidden_field :ticket_id, value: ticket.id %>
-										<%= f.input :quantity, input_html: { min: 1, value: "1" } %>
-										<%= f.button :submit %>
-									<% end %>
-								</td>
-							</tr>
-						</tbody>
-						<% end %>
-					</table> 
-				<% else %>
-					<h4>Free</h4>	
-			<% end %>
-			<%= link_to "Get Ticket", cart_path, class: "btn btn-primary" %>
-		</div>
+			<div class="event-ticket">
+				<h3>Ticket Information</h3>
+					<%if @event.tickets.any? %>
+						<!-- Display when the event has ticket or is a paid event--> 
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Ticket Type</th>
+										<th>Price</th>
+										<th></th>
+									</tr>
+								</thead>
+								<% @event.tickets.each do |ticket| %>
+								<tbody>
+									<tr>
+										<td><%= ticket.name %></td>
+										<td><%= ticket.price %></td>
+										<td>
+											<%= simple_form_for @order_item, remote:true do |f| %>
+												<%= f.hidden_field :ticket_id, value: ticket.id %>
+												<%= f.input :quantity, input_html: { min: 1, value: "1" } %>
+												<%= f.button :submit %>
+											<% end %>
+										</td>
+									</tr>
+								</tbody>
+								<% end %>
+							</table>
+							<%= link_to "Get Ticket", cart_path, class: "btn btn-primary" %> 
+					<% else %>
+						<!-- When event has no ticket or event is free display.. -->
+						<br><br>
+							<h4>Free</h4>
+							<p>DISCLAIMER!: Note that Free Events can be registered once</p>
+							<%= link_to "Register", event_attendances_path(@event), method: :post, class: "btn btn-primary" %>	
+					<% end %>
+			</div>
 		<% end %>
 		<br><br><br><br>
+
+		<!-- Event Description-->
 		<div class="event-details">
 			<h3>Event Details</h3>
 			<p><%= @event.description %></p>
 		</div>
 		
-
+		<!-- Comment Section-->
 		<%= render "comments/form", event: @event, comment: @comment if policy(@comment).create? %>
 		<header>
 			<div id="comments">
@@ -73,14 +82,16 @@
 		</header>
 	</div>
 
+	<!--Side Bar (contains: tags, organization name an venue, likes)-->
 	<div class="col-sm-3">
 		<div class="sidebar">
-			<h4 class="organizer"><%=link_to @event.organizer.organisation_name, user_path(@event.organizer) %></h4>
+			<h4 class="organizer"><%= @event.organizer.organisation_name %></h4>
 			<p>
 				<span class="event-venue"><%= @event.venue %>,<strong><%= @event.location %></strong></span>
 			</p>
 		</div>
 
+		<!-- Tags Section-->
 		<hr>
 		<div class="sidebar">
 			<h4 class="tags">Tags</h4>
@@ -88,10 +99,14 @@
 				<%= render @event.tags%>
 			<% end %>
 		</div>
+		
+		<!-- Attendees Section-->
 		<hr>
 		<div class="sidebar">
 			<h4 class="attendees">Attendees</h4> 
 		</div>
+
+		<!-- Likes Section-->
 		<hr>
 		<div class="sidebar">
 			<h4 class="likes">Likes</h4>
@@ -103,6 +118,7 @@
 				<span id="dislike"><%= @event.total_dislikes %></span>
 			<% end %>
 		</div>
+		
 	</div>
 </div>
 

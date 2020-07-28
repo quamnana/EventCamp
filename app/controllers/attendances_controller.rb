@@ -7,6 +7,14 @@ class AttendancesController < ApplicationController
 		
 	end
 
+	def create
+		@attendance = @event.attendances.where(attendee: current_user).first_or_create
+
+		if @attendance.save
+			flash[:notice] = "You have successfully registered to attend this event"
+			redirect_to user_path(current_user)
+		end
+	end
 
 
 

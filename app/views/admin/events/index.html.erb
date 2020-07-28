@@ -29,7 +29,14 @@
 				<td><%= link_to event.title, event_path(event) %></td>
 				<td><%= event.venue%></td>
 				<td><%= time_format(event.created_at) %></td>
-				<td><%= link_to event.attendees.count, admin_attendance_path(event), class: "btn btn-primary" %></td>
+				
+				<!--Display number of attendees depending on whether the event has coupon or not-->
+				<% unless event.coupons.any? %>
+					<td><%= link_to event.attendees.count, admin_attendance_path(event), class: "btn btn-primary" %></td>
+				<% else %>
+					<td><%= link_to event.coupons.count, admin_attendance_path(event), class: "btn btn-primary" %></td>
+				<% end %>
+				<!--end-->
 				<td><%= link_to event.comments.count, admin_comment_path(event), class: "btn btn-success" %></td>
 				<td><%= event.likes.count %></td>
 				<td><%= event_status(event) %></td>

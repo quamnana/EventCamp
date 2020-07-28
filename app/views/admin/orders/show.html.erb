@@ -12,8 +12,6 @@
 		<tr>
 			<th>Ticket Name</th>
 			<th>Price</th>
-			<th>Quantity</th>
-			<th>Sub-Total</th>
 			<th>Sku</th>
 			<th colspan="3">Ticket Code</th>
 		</tr>
@@ -26,8 +24,6 @@
 				<tr>
 					<td><%= order_item.ticket.name %></td>
 					<td><%= order_item.ticket.price %></td>
-					<td><%=order_item.quantity %></td>
-					<td><%= order_item.total %></td>
 					<td><%= (order_item.ticket.sku).upcase %></td>
 					<td><%= (coupon.code).upcase %></td>
 				</tr>

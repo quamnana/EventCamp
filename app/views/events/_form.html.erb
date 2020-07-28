@@ -24,9 +24,8 @@
 			<%= f.input :image, as: :file, label: "Upload Event Image" %>
 			
 
-			
-
 			<%= f.button :submit, class: "btn btn-primary" %>
+			<%= link_to "Back", events_path, class: "btn btn-default" %>
 		</div>
 
 
@@ -43,7 +42,7 @@
 						<% end %>
 
 						<div class="links">
-							<%= link_to_add_association 'Add Ticket', f, :tickets, class: "btn btn-default add-button" %>
+							<%= link_to_add_association 'Add Ticket', f, :tickets, class: "btn btn-success add-button" %>
 						</div>
 					</div>
 				</div>
@@ -55,6 +54,6 @@
 
 	<% end %>
 
-		<%= link_to "Back", events_path %>
+		
 	
 </div>
