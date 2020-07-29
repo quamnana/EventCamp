@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def full_title(page_title = " ")
-		default_title = "Ibento - Making Events Fun"
+		default_title = "EventCamp - Making Events Fun"
 		if page_title.empty?
 			default_title
 		else
@@ -36,6 +36,7 @@ module ApplicationHelper
 			Order.new
 		end
 	end
-	
+
+
 	
 end

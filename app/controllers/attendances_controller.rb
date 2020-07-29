@@ -4,6 +4,17 @@ class AttendancesController < ApplicationController
 	skip_after_action :verify_authorized
 	
 	def show
+
+		respond_to do |format|
+			format.html
+			format.pdf do
+				render pdf: "#{@event.title} - Attendance List",
+					   template: "attendances/show.html.erb",
+					   layout: "pdf_layout.html",
+					   page: "A4",
+					   encoding: "UTF-8"
+			end
+		end
 		
 	end
 

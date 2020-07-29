@@ -4,12 +4,12 @@
 
 <div class="col-sm-8 offset-2">
 	<p>
-		<h3>Horray!</h3> <strong><%=@event.coupons.last.user.full_name %>,</strong>	your registration for <strong><%= @event.title %></strong> has been completed.
-			Your ticket has been emailed to you at <strong><%=@event.coupons.last.user.email %></strong> 
+		<h3>Horray!</h3> <strong><%=@order.user.full_name %>,</strong>	your registration for <strong><%= @event.title %></strong> has been completed.
+			Your ticket has been emailed to you at <strong><%=@order.user.email %></strong> 
 		
 	</p>
 
 	<p>You may go ahead and click on the Download Ticket button below to download your ticket right away. </p>
 
-	<%= link_to "Download Ticket", order_path(@order), class: "btn btn-success" %>
+	<%= link_to "Download Ticket", order_path(@order, format: :pdf), target: '_blank', class: "btn btn-success" %>
 </div>

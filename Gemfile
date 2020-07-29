@@ -48,6 +48,10 @@ gem 'fog', '~> 2.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem "cocoon"
 gem 'rqrcode'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
+
 
 #gem 'searchkick', '~> 3.1', '>= 3.1.2'
 gem 'stripe'

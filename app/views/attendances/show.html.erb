@@ -1,7 +1,8 @@
 <header>
-	<h1 id="show-title"><%= @event.title %></h1> <h3>Attendance Status</h3>
+	<h1 id="show-title"><%= @event.title %></h1> <h3>Attendance List</h3>
 
 	<ul class="actions">
+		<li><%= link_to "Download PDF", event_attendance_path(@event, format: :pdf), target: "_blank", class: "btn btn-success"%></li>
 		<li><%= link_to "Back", user_path, class: "btn btn-default" %></li>
 	</ul>
 </header>
@@ -41,7 +42,7 @@
 				<tr>
 					<td><%= coupon.user.full_name %></td>
 					<td><%= coupon.user.email %></td>
-					<td><%= coupon.created_at %></td>
+					<td><%= time_format(coupon.created_at) %></td>
 					<td><%= coupon.ticket.name %></td>
 					<td><%= (coupon.code).upcase %></td>
 				</tr>
