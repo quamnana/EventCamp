@@ -3,6 +3,7 @@ class ChargesController < ApplicationController
 	before_action :authenticate_user!
 	after_action :set_coupon, only: [:create]
 	after_action :set_attendance, only: [:create]
+	after_action :email_attendee, only: [:create]
 
 	def new
 		
@@ -62,6 +63,9 @@ class ChargesController < ApplicationController
 			@attendance = @event.attendances.where(attendee: current_user).create
 		end
 
+		def email_attendee
+			OrderMailer.with(order: @order).order_email.deliver_later
+		end
 		
 
 end

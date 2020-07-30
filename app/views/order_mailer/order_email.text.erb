@@ -1,0 +1,12 @@
+Hello <%=@order.user.full_name %>, 
+
+Thank you for your purchase, this email confirms that, you have successfully registered to attend <%= @event.title %>.
+
+You can download your ticket via PDF from below: 
+<%= link_to "Download Ticket", order_url(@order, format: :pdf), target: '_blank', class: "btn btn-success btn-lg" %>
+
+Please dont forget to bring your ticket with you during the event. Enjoy!
+
+Many regards,
+
+EventCamp Team.

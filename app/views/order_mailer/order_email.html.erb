@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+
+</head>
+<body class="bg-light">
+	
+		<div class="col-sm-8 ">
+			<div class="container">
+				<div class="card">
+					<h3>Successful Registration</h3>
+					<div class="card-body">
+						<p>Hello <%=@order.user.full_name %>, </p>
+						<br><br>
+						<p>Thank you for your purchase, this email confirms that, you have successfully registered to attend
+						   <strong><%= @event.title %></strong>.
+						</p>
+						<br><br>
+						<p>You can download your ticket via PDF from below: </p>
+						<%= link_to "Download Ticket", order_url(@order, format: :pdf), target: '_blank', class: "btn btn-success btn-lg" %>
+						<br><br>
+						<div class="text-danger">
+							<p>Please dont forget to bring your ticket with you during the event. Enjoy!</p>
+						</div>
+						
+						<p>Many regards,<br>EventCamp Team</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body>
+</html>

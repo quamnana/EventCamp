@@ -51,6 +51,9 @@ gem 'rqrcode'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'wkhtmltopdf-binary-edge'
+gem 'bootstrap-email'
+
+
 
 
 #gem 'searchkick', '~> 3.1', '>= 3.1.2'
