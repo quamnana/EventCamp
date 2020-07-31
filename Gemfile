@@ -52,6 +52,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'wkhtmltopdf-binary-edge'
 gem 'bootstrap-email'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 

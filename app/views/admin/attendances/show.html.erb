@@ -25,7 +25,7 @@
 		<!--Display attendees for events without tickets/coupons--> 	
 	<% unless @event.coupons.any? %>
 		<tbody>
-			<% @event.attendees.each do |user| %>
+			<% @attendees.each do |user| %>
 				<tr>
 					<td><%= user.full_name %></td>
 					<td><%= user.email %></td>
@@ -33,11 +33,16 @@
 				</tr>
 			<% end %>
 		</tbody>
+
+		<!-- will_pagination with bootstrap styling -->
+		<div class="text-center">
+			<%= will_paginate @attendees %>
+		</div>
 	<% end %>
 
 		<!--Display attendees for events with tickets/coupons-->
 		<tbody>
-			<% @event.coupons.each do |coupon| %>
+			<% @coupons.each do |coupon| %>
 				<tr>
 					<td><%= coupon.user.full_name %></td>
 					<td><%= coupon.user.email %></td>
@@ -52,3 +57,9 @@
 <% else%>
 	<p>Sorry! This event has no attendees yet...</p>
 <% end %>
+
+<!-- will_pagination with bootstrap styling -->
+<div class="text-center">
+	<%= will_paginate @coupons %>
+</div>
+

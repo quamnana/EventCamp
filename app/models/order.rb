@@ -12,7 +12,7 @@ class Order < ApplicationRecord
 	end
 
 	def subtotal_in_cents
-		(self.subtotal * 100).to_i
+		(self.subtotal * 100 * 0.17).to_i
 	end
 
 
@@ -22,6 +22,4 @@ class Order < ApplicationRecord
 			self[:subtotal] = subtotal
 		end
 
-	
-	
 end

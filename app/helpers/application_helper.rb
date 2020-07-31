@@ -37,6 +37,15 @@ module ApplicationHelper
 		end
 	end
 
+	def ghana_cedi(price)
+		content_tag("&#8373;#{price}")
+	end
+
+	def total_income(total_order)
+		commision = 0.05
+		total_order = total_order - (total_order * commision)
+	end
+
 
 	
 end

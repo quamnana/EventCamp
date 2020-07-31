@@ -7,9 +7,9 @@ class EventsController < ApplicationController
 		if params[:query].present?
 			@events = Event.search(params[:query])
 		else
-			@events = Event.order(created_at: :desc)
+			@events = Event.order(start_date: :desc).paginate(page: params[:page], per_page: 5)
 		end
-		@events = Event.order(start_date: :desc)
+		#@events = Event.order(start_date: :desc)
 		@categories = Category.order(:name)
 		authorize @events, :index?
 	end

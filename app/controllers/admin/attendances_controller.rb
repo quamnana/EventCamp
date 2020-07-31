@@ -4,6 +4,8 @@ class Admin::AttendancesController < Admin::ApplicationController
 	#skip_after_action :verify_authorized
 	
 	def show
+		@attendees = @event.attendees.paginate(page: params[:page], per_page: 10)
+		@coupons = @event.coupons.paginate(page: params[:page], per_page: 10)
 	end
 
 
