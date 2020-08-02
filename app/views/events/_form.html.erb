@@ -13,6 +13,8 @@
 			
 			<%= f.input :category_id, collection: Category.all, label: "Select Category", prompt: true %>
 
+			<%= f.input :seats,label: "Event Capacity", hint: "Number of attendees to be expected at the event" %>
+
 			<%= f.input :tag_list, label: "Tag", hint: "Please enter comma seperated words only" %>
 
 			<h3>Venue and Location</h3>

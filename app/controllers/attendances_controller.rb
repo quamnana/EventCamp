@@ -6,6 +6,7 @@ class AttendancesController < ApplicationController
 	def show
 		@free_attendees = @event.attendees.paginate(page: params[:page], per_page: 10)
 		@paid_attendees = @event.coupons.paginate(page: params[:page], per_page: 10)
+		@total_sales = @event.coupons.collect{|coupon| coupon.ticket.price}.sum
 
 		respond_to do |format|
 			format.html

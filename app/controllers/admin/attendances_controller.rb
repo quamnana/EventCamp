@@ -4,8 +4,10 @@ class Admin::AttendancesController < Admin::ApplicationController
 	#skip_after_action :verify_authorized
 	
 	def show
-		@attendees = @event.attendees.paginate(page: params[:page], per_page: 10)
-		@coupons = @event.coupons.paginate(page: params[:page], per_page: 10)
+		@free_attendees = @event.attendees.paginate(page: params[:page], per_page: 10)
+		@paid_attendees = @event.coupons.paginate(page: params[:page], per_page: 10)
+
+		@total_sales = @event.coupons.collect{|coupon| coupon.ticket.price}.sum
 	end
 
 

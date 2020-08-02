@@ -41,10 +41,11 @@ module ApplicationHelper
 		content_tag("&#8373;#{price}")
 	end
 
-	def total_income(total_order)
+	def total_income(total_sales)
 		commision = 0.05
-		total_order = total_order - (total_order * commision)
+		total_income = total_sales - (total_sales * commision)
 	end
+
 
 
 	

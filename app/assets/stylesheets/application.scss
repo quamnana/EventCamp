@@ -33,7 +33,7 @@ header {
   @extend .page-header;
   position: relative;
   padding-bottom: 0;
-  padding-top:  50px;
+  padding-top:  60px;
 
   &:first-child {
     margin-top: 20px;
@@ -123,7 +123,7 @@ a.delete {
   @extend .alert-success;
     margin: 30px;
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 20px;
     right: 20px;
 }
@@ -132,7 +132,7 @@ a.delete {
   @extend .alert-danger;
      margin: 30px;
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 20px;
     right: 20px;
 
@@ -199,12 +199,17 @@ span.past {
   margin: 15px;
 }
 
+.navbar{
+  height: 70px;
+}
 .navbar-inverse{
   background: #0e1b4d;
+
 }
 .navbar-inverse .navbar-nav > .active > a, 
 .navbar-inverse .navbar-nav > .active > a:hover{
   background: rgba(6, 12, 34, 0.8);
+  height: 70px;
 }
 
 .navbar-brand{
@@ -215,7 +220,7 @@ span.past {
 }
 
 .navbar-brand >img {
-  height: auto;
+  height: 70px;
   padding: 0px;
   width: 100%;
   margin-right: 0px;

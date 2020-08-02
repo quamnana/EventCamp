@@ -23,6 +23,7 @@
 
 		<!-- Ticket Details-->
 		<% if user_signed_in? %>
+			<% unless @event.seats_left? || @event.coupons_left? %>
 			<div class="event-ticket">
 				<h3>Ticket Information</h3>
 					<%if @event.tickets.any? %>
@@ -59,7 +60,9 @@
 							<p>DISCLAIMER!: Note that Free Events can be registered once</p>
 							<%= link_to "Register", event_attendances_path(@event), method: :post, class: "btn btn-primary" %>	
 					<% end %>
-			</div>
+					
+				</div>
+			<% end %>
 		<% end %>
 		<br><br><br><br>
 
@@ -103,7 +106,13 @@
 		<!-- Attendees Section-->
 		<hr>
 		<div class="sidebar">
-			<h4 class="attendees">Attendees</h4> 
+			<% if @event.tickets.any? %>
+			<h4 class="attendees">Attendees <span class="pull-right"><%= @event.coupons.count %></span></h4>
+			<span class="label label-danger pull-right"><%= pluralize(@event.coupons_left, "Seat") %> Available</span>
+			<% else %>
+				<h4 class="attendees">Attendees <span class="pull-right"><%= @event.attendees.count %></span></h4>
+				<span class="label label-danger pull-right"><%= pluralize(@event.seats_left, "Seat") %> Available</span>
+			<% end %>
 		</div>
 
 		<!-- Likes Section-->
@@ -118,7 +127,7 @@
 				<span id="dislike"><%= @event.total_dislikes %></span>
 			<% end %>
 		</div>
-		
+
 	</div>
 </div>
 

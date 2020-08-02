@@ -17,40 +17,59 @@
 				<th>Registered Date</th>
 				<% if @event.coupons.any? %>
 					<th>Ticket Purchased</th>
-					<th colspan="3">Ticket Code</th>
+					<th>Ticket Code</th>
+					<th>Ticket Price</th>
 				<% end %>
 			</tr>
 		</thead>
 
 		<!--Display attendees for events without tickets/coupons--> 	
-	<% unless @event.coupons.any? %>
-		<tbody>
-			<% @attendees.each do |user| %>
-				<tr>
-					<td><%= user.full_name %></td>
-					<td><%= user.email %></td>
-					<td><%= time_format(user.created_at) %></td>
-				</tr>
-			<% end %>
-		</tbody>
+		<% unless @paid_attendees.any? %>
+			<tbody>
+				<% @free_attendees.each do |user| %>
+					<tr>
+						<td><%= user.full_name %></td>
+						<td><%= user.email %></td>
+						<td><%= time_format(user.created_at) %></td>
+					</tr>
+				<% end %>
+			</tbody>
 
-		<!-- will_pagination with bootstrap styling -->
-		<div class="text-center">
-			<%= will_paginate @attendees %>
-		</div>
-	<% end %>
+			<!-- will_pagination with bootstrap styling -->
+			<div class="text-center">
+				<%= will_paginate @free_attendees %>
+			</div>
+		<% end %>
 
 		<!--Display attendees for events with tickets/coupons-->
 		<tbody>
-			<% @coupons.each do |coupon| %>
+			<% @paid_attendees.each do |coupon| %>
 				<tr>
 					<td><%= coupon.user.full_name %></td>
 					<td><%= coupon.user.email %></td>
 					<td><%= time_format(coupon.created_at) %></td>
 					<td><%= coupon.ticket.name %></td>
 					<td><%= (coupon.code).upcase %></td>
+					<td><%= coupon.ticket.price %></td>
 				</tr>
 			<% end %>
+			
+			<!-- Display income report and number of attendees or registrants for the event -->
+			<% if @paid_attendees.any? %>
+				<div class="attendance-details">
+					<strong>Total Sales</strong> -GH<%= ghana_cedi(@total_sales) %><br>
+					<span class="label label-danger">Commision: 5%</span><br><br>
+					<strong>Total Income</strong>: GH<%= ghana_cedi(total_income(@total_sales)) %><br><br>
+					
+
+					<div class="pull-right"><span class="label label-primary">Registrations: <%= @paid_attendees.count %></span></div>
+				</div>
+			<% else %>
+				<span class="label label-danger">Free Event</span>
+				<div class="pull-right"><span class="label label-primary">Registrations: <%= @free_attendees.count %></span></div>
+			<% end %>
+			<!--end-->
+
 		</tbody>
 	</table>
 	
@@ -60,6 +79,6 @@
 
 <!-- will_pagination with bootstrap styling -->
 <div class="text-center">
-	<%= will_paginate @coupons %>
+	<%= will_paginate @paid_attendees %>
 </div>
 

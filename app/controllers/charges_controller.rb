@@ -63,9 +63,8 @@ class ChargesController < ApplicationController
 			@attendance = @event.attendances.where(attendee: current_user).create
 		end
 
+		# Send email to the attendee
 		def email_attendee
 			OrderMailer.with(order: @order).order_email.deliver_later
 		end
-		
-
 end

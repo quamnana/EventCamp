@@ -11,6 +11,7 @@ class Order < ApplicationRecord
 		order_items.collect{|order_item| order_item.valid? ? order_item.quantity * order_item.unit_price : 0}.sum
 	end
 
+	# converting Ghana cedis into dollar-cents
 	def subtotal_in_cents
 		(self.subtotal * 100 * 0.17).to_i
 	end

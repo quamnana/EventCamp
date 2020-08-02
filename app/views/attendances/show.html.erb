@@ -54,20 +54,23 @@
 					<td><%= coupon.ticket.price %></td>
 				</tr>
 			<% end %>
+			
+			<!-- Display income report and number of attendees or registrants for the event -->
 			<% if @paid_attendees.any? %>
 				<div class="attendance-details">
-				<% total_order = @event.coupons.collect{|coupon| coupon.ticket.price}.sum %>
-				
-				<strong>Total Sales</strong> -GH<%= ghana_cedi(total_order) %><br>
-				<span class="label label-danger">Commision: 5%</span><br><br>
-				<strong>Total Income</strong>: GH<%= ghana_cedi(total_income(total_order)) %><br><br>
-				
+					<strong>Total Sales</strong> -GH<%= ghana_cedi(@total_sales) %><br>
+					<span class="label label-danger">Commision: 5%</span><br><br>
+					<strong>Total Income</strong>: GH<%= ghana_cedi(total_income(@total_sales)) %><br><br>
+					
 
-				<div class="pull-right"><span class="label label-primary">Registrations: <%= @paid_attendees.count %></span></div>
+					<div class="pull-right"><span class="label label-primary"><%= pluralize(@paid_attendees.count, "Registration")%></span></div>
 				</div>
 			<% else %>
-				<div class="pull-right"><span class="label label-primary">Registrations: <%= @free_attendees.count %></span></div>
+				<span class="label label-danger">Free Event</span><br><br>
+				<div class="pull-right"><span class="label label-primary"><%= pluralize(@free_attendees.count, "Registration") %></span></div>
 			<% end %>
+			<!--end-->
+
 		</tbody>
 	</table>
 	

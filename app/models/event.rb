@@ -51,4 +51,21 @@ class Event < ApplicationRecord
 	def total_dislikes
 		self.likes.where(like: "dislike").count
 	end
+
+# Seates left for an event
+	def seats_left
+		seats - attendees.count
+	end
+
+	def seats_left?
+		seats == attendees.count
+	end
+
+	def coupons_left
+		seats - coupons.count
+	end
+
+	def coupons_left?
+		seats == coupons.count
+	end
 end
