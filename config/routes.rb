@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
   end
   
-  devise_for :users, controller:{ registrations: 'registrations'}
+  devise_for :users, controller:{ 
+                                  registrations: 'registrations', 
+                                  confirmations: 'confirmations'
+                                }
 	
 
 	root 'home#index'

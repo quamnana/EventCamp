@@ -1,5 +1,30 @@
-<p>Welcome <%= @email %>!</p>
+<!DOCTYPE html>
+<html>
+<head>
+	    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 
-<p>You can confirm your account email through the link below:</p>
+</head>
+<body class="bg-light">
+	
+		<div class="col-sm-8 ">
+			<div class="container">
+				<div class="card">
+					<h3>Confirm Your Email</h3>
+					<div class="card-body">
+						<p>Hey <%= @user.full_name %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+						<p>We recieved a request to set your EventCamp email to <%= @email %>. If this is correct, please confirm by clicking the button below</p>
+						
+						<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "btn btn-primary" %>
+
+						<p>Many regards,<br>EventCamp Team</p>
+						<hr>
+
+						<p>Once you confirm, all future messages about your EventCamp account will be sent to <%= @email %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body>
+</html>
