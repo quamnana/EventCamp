@@ -13,7 +13,7 @@
 			
 			<%= f.input :category_id, collection: Category.all, label: "Select Category", prompt: true %>
 
-			<%= f.input :seats,label: "Event Capacity", hint: "Number of attendees to be expected at the event" %>
+			<%= f.input :seats,label: "Event Capacity", hint: "Number of attendees to be expected at the event. NOTE: Event Capacity is subject to change so please input an estimate number of attendees you will be expecting at the event, this number can be changed anytime you wish! " %>
 
 			<%= f.input :tag_list, label: "Tag", hint: "Please enter comma seperated words only" %>
 
@@ -36,6 +36,7 @@
 		<!-- Adding nested form -->
 				<div class="col-sm-4">
 					<h3>Tickets Details</h3>
+					<p>Please don't fill the Ticket form if your event is FREE!</p> 	
 					<div id="tickets">
 						<%= f.simple_fields_for :tickets do |ticket|%>
 							<%= render "ticket_fields", f: ticket %>

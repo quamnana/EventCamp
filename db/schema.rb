@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_181808) do
     t.string "image"
     t.string "slug"
     t.integer "category_id"
-    t.integer "seats", default: 0
+    t.integer "seats", default: 1
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
     t.index ["user_id"], name: "index_events_on_user_id"

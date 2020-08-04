@@ -26,7 +26,7 @@ class ChargesController < ApplicationController
 		charge = Stripe::Charge.create({
 			customer: customer.id,
 			amount: @amount,
-			description: "Event Payment",
+			description: @event.title,
 			currency: 'usd'
 		})
 

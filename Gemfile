@@ -54,6 +54,8 @@ gem 'wkhtmltopdf-binary-edge'
 gem 'bootstrap-email'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'searchkick'
+
 
 
 

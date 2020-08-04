@@ -55,9 +55,13 @@
 							<%= link_to "Get Ticket", cart_path, class: "btn btn-primary" %> 
 					<% else %>
 						<!-- When event has no ticket or event is free display.. -->
-						<br><br>
-							<h4>Free</h4>
-							<p>DISCLAIMER!: Note that Free Events can be registered once</p>
+						<br>
+						<div class="event-details">
+							<h3>Free</h3>
+							<p>DISCLAIMER!: Note that Free Events can be registered once.</p>
+							<p>Your details will be with the event organizer once you click on the Register button, all you have to do after is to show up at the event and enjoy! </p>
+						</div>
+							
 							<%= link_to "Register", event_attendances_path(@event), method: :post, class: "btn btn-primary" %>	
 					<% end %>
 					

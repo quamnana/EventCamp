@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 		if params[:query].present?
 			@events = Event.search(params[:query])
 		else
-			@events = Event.order(start_date: :desc).paginate(page: params[:page], per_page: 5)
+			@events = Event.order(start_date: :asc).paginate(page: params[:page], per_page: 5)
 		end
 		#@events = Event.order(start_date: :desc)
 		@categories = Category.order(:name)

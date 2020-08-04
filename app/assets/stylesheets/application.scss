@@ -3,7 +3,8 @@
 @import "font-awesome";
 @import "events";
 @import "admin/application";
- @import "home";
+@import "home";
+
 
 body {
    font-family: "Open Sans", sans-serif;
@@ -126,6 +127,7 @@ a.delete {
     top: 40px;
     left: 20px;
     right: 20px;
+    z-index: 4;
 }
 
 .alert-alert{
@@ -135,6 +137,7 @@ a.delete {
     top: 40px;
     left: 20px;
     right: 20px;
+    z-index: 4;
 
 }
 
@@ -195,8 +198,11 @@ span.past {
 
 
 .thumbnail{
+  top: 200px;
   padding: 20px;
-  margin: 15px;
+  margin: 50px;
+  margin-top: 65px;
+  padding-top: 0;
 }
 
 .navbar{

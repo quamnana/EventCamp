@@ -14,19 +14,19 @@
 
 <% unless current_page?(root_path) %>
   <%= render "layouts/header"%>
-  <div class="container">
-    <% flash.each do |type, message|%>
-      <div class="alert alert-<%= type %>">
-        <%= message %>
-      </div>
-    <% end %>
-  </div>
-
+  
 <% end%>
 
 
 
 <div class="container">
+
+    <% flash.each do |type, message|%>
+      <div class="alert alert-<%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
+ 
   <%= yield %>
 </div>
   

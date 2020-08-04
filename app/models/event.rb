@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
+	searchkick
 	attr_accessor :tag_list
-	#searchkick
+	
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	
@@ -20,9 +21,10 @@ class Event < ApplicationRecord
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 #Validating of fields
-	validates :title, presence: true, length: {minimum: 5}
+	validates :title, presence: true, length: {minimum: 5}, uniqueness: true
 	validates :venue, presence: true
 	validates :location, presence: true
+	validates :seats, presence: true
 
 #Association between events and ticket model
 	has_many :tickets, dependent: :destroy
