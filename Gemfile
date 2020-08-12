@@ -52,6 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard', '~> 2.16', '>= 2.16.1'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  gem 'better_errors', '~> 2.5' #for displaying well defined errors in the browser
 end
 
 group :test do
@@ -63,7 +64,7 @@ group :test do
 end
 
 # Gems used to develop the application
-gem 'better_errors', '~> 2.5' #for displaying well defined errors in the browser
+
 gem 'awesome_print', '~> 1.8' #for better dislpay of models in rails console 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7' #for styling the application
 gem 'jquery-rails'
@@ -85,6 +86,11 @@ gem 'will_paginate' #to divide page content
 gem 'bootstrap-will_paginate' #bootstrap styling for will_paginate
 gem 'searchkick' #for implementing search functionality
 gem 'stripe' #for implementing payment gateway for app
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
