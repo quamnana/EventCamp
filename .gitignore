@@ -32,3 +32,6 @@
 
 #Ignore uploaded files
 /public/uploads
+
+# Ignore environment variables
+/.env

@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.7'
+gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'dotenv', '~> 2.7', '>= 2.7.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
@@ -34,39 +36,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'better_errors', '~> 2.5'
-gem 'awesome_print', '~> 1.8'
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'jquery-rails'
-gem 'simple_form', '~> 4.0', '>= 4.0.1'
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
-gem 'pundit', '~> 2.0'
-gem 'devise', '~> 4.5'
-gem 'carrierwave', '~> 1.2', '>= 1.2.3'
-gem 'friendly_id', '~> 5.2', '>= 5.2.4'
-gem 'fog', '~> 2.1'
-gem 'mini_magick', '~> 4.9', '>= 4.9.2'
-gem "cocoon"
-gem 'rqrcode'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
-gem 'wkhtmltopdf-binary-edge'
-gem 'bootstrap-email'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'searchkick'
-
-
-
-
-
-#gem 'searchkick', '~> 3.1', '>= 3.1.2'
-gem 'stripe'
-
-
-
-
-
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
@@ -92,6 +61,31 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+
+# Gems used to develop the application
+gem 'better_errors', '~> 2.5' #for displaying well defined errors in the browser
+gem 'awesome_print', '~> 1.8' #for better dislpay of models in rails console 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7' #for styling the application
+gem 'jquery-rails'
+gem 'simple_form', '~> 4.0', '>= 4.0.1' #for generating forms
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4' #for generate icons 
+gem 'pundit', '~> 2.0' #for authourization
+gem 'devise', '~> 4.5' #for authentication
+gem 'carrierwave', '~> 1.2', '>= 1.2.3' #for upload of images
+gem 'friendly_id', '~> 5.2', '>= 5.2.4' #display more human friendly url inplace of standard ids 
+gem 'fog', '~> 2.1'
+gem 'mini_magick', '~> 4.9', '>= 4.9.2'
+gem "cocoon" #for nested forms
+gem 'rqrcode' #for generating qrcode for tickets
+gem 'wicked_pdf' #for generating downloadable pdf format of pages
+gem 'wkhtmltopdf-binary' #support for wicked_pdf
+gem 'wkhtmltopdf-binary-edge' #support for wicked_pdf
+gem 'bootstrap-email' #styling emails with boostrap
+gem 'will_paginate' #to divide page content
+gem 'bootstrap-will_paginate' #bootstrap styling for will_paginate
+gem 'searchkick' #for implementing search functionality
+gem 'stripe' #for implementing payment gateway for app
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
