@@ -9,5 +9,5 @@ class RecieptsPolicy < ApplicationPolicy
 		def order
 			record
 		end
-	end
+	
 end
