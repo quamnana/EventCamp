@@ -18,5 +18,4 @@ module Type1
   end
 end
 
-config.action_mailer.delivery_method = :postmark
-config.action_mailer.postmark_settings = { :api_token => "POSTMARK_KEY" }
+
