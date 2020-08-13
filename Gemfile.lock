@@ -530,7 +530,7 @@ GEM
     wicked_pdf (2.1.0)
       activesupport
     will_paginate (3.3.0)
-    wkhtmltopdf-binary (0.12.6.2)
+    wkhtmltopdf-binary (0.12.6.3)
     wkhtmltopdf-binary-edge (0.12.5.1)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
