@@ -87,6 +87,7 @@ gem 'will_paginate' #to divide page content
 gem 'bootstrap-will_paginate' #bootstrap styling for will_paginate
 gem 'searchkick' #for implementing search functionality
 gem 'stripe' #for implementing payment gateway for app
+gem "figaro"
 
 
 
