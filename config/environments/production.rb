@@ -94,6 +94,8 @@ Rails.application.configure do
 
   #Gmail
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'eventcamp.herokuapp.com' }
+
 # SMTP settings for gmail
 config.action_mailer.smtp_settings = {
  :address              => "smtp.gmail.com",
@@ -103,5 +105,4 @@ config.action_mailer.smtp_settings = {
  :authentication       => "plain",
 :enable_starttls_auto => true
 }
-
 end
