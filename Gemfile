@@ -88,6 +88,8 @@ gem 'bootstrap-will_paginate' #bootstrap styling for will_paginate
 gem 'searchkick' #for implementing search functionality
 gem 'stripe' #for implementing payment gateway for app
 gem "figaro"
+gem 'azure-storage'
+
 
 
 
