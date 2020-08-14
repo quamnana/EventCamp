@@ -55,11 +55,10 @@ GEM
       faraday (~> 0.9)
       faraday_middleware (~> 0.10)
       nokogiri (~> 1.6)
-    azure-storage (0.15.0.preview)
+    azure-storage (0.12.3.preview)
       azure-core (~> 0.1)
       faraday (~> 0.9)
       faraday_middleware (~> 0.10)
-      nokogiri (~> 1.6, >= 1.6.8)
     bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
@@ -91,6 +90,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave-azure_rm (0.1.2)
+      azure-storage (~> 0.12.1.preview)
+      carrierwave
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -555,7 +557,6 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print (~> 1.8)
-  azure-storage
   better_errors (~> 2.5)
   bootsnap (>= 1.1.0)
   bootstrap-email
@@ -564,6 +565,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.2, >= 1.2.3)
+  carrierwave-azure_rm
   chromedriver-helper
   cocoon
   coffee-rails (~> 4.2)
