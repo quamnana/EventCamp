@@ -73,7 +73,7 @@ gem 'simple_form', '~> 4.0', '>= 4.0.1' #for generating forms
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4' #for generate icons 
 gem 'pundit', '~> 2.0' #for authourization
 gem 'devise', '~> 4.5' #for authentication
-gem 'carrierwave', '~> 1.2', '>= 1.2.3' #for upload of images
+gem 'carrierwave', '~> 1.3' #for upload of images
 gem 'friendly_id', '~> 5.2', '>= 5.2.4' #display more human friendly url inplace of standard ids 
 gem 'fog', '~> 2.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
