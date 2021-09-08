@@ -53,7 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard', '~> 2.16', '>= 2.16.1'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
-  gem 'better_errors', '~> 2.5' #for displaying well defined errors in the browser
+  gem 'better_errors', '~> 2.8' #for displaying well defined errors in the browser
 end
 
 group :test do
